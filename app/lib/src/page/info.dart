@@ -1,4 +1,5 @@
 import 'package:fastworkdemo/src/widget/aboutme.dart';
+import 'package:fastworkdemo/src/widget/myskill.dart';
 import 'package:fastworkdemo/src/widget/timeline.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,10 @@ class InfoPage extends StatelessWidget {
               padding: EdgeInsets.all(20),
             ),
             MyExp(),
+            Padding(
+              padding: EdgeInsets.all(20),
+            ),
+            MySkill(),
           ],
         ),
       ),
