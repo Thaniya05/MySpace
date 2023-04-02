@@ -1,4 +1,4 @@
-import 'package:fastworkdemo/page/firstpage.dart';
+import 'package:fastworkdemo/src/firstpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        shadowColor: Color(0xff1C4B5F),
       ),
       body: Center(
         child: Column(
