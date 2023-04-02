@@ -34,29 +34,12 @@ class IntroPage extends StatelessWidget {
   }
 }
 
-class Pages extends StatelessWidget {
-  final text;
-  final color;
-  Pages({this.text, this.color});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      child: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                text,
-                textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
-              ),
-            ]),
-      ),
-    );
-  }
-}
+List<IconData> _datalist = [
+  FontAwesomeIcons.squareJs,
+  FontAwesomeIcons.html5,
+  FontAwesomeIcons.node,
+  FontAwesomeIcons.react
+];
 
 class Intro1Page extends StatelessWidget {
   final text;
@@ -72,150 +55,99 @@ class Intro1Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Hello World',
-                    style: TextStyle(
-                        color: Color(0xff53f6aa),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 30,
-                    child: AnimatedTextKit(
-                      pause: Duration(seconds: 0),
-                      repeatForever: true,
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          '_',
-                          speed: Duration(milliseconds: 400),
-                          textStyle: TextStyle(
-                              color: Color(0xff53f6aa),
-                              fontSize: 30,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(5)),
-            Text(
-              "Role : Backend Developer",
-              style: TextStyle(
-                color: Color(0xff53f6aa),
-                fontSize: 16,
-                fontWeight: FontWeight.w100,
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(5)),
-            Text(
-              "Status : Interested and Studying Flutter",
-              style: TextStyle(
-                color: Color(0xff53f6aa),
-                fontSize: 16,
-                fontWeight: FontWeight.w100,
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(5)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: null,
-                  icon: FaIcon(
-                    FontAwesomeIcons.squareJs,
-                    color: Color(0xff53f6aa),
-                  ),
-                ),
-                IconButton(
-                  onPressed: null,
-                  icon: FaIcon(
-                    FontAwesomeIcons.html5,
-                    color: Color(0xff53f6aa),
-                  ),
-                ),
-                IconButton(
-                  onPressed: null,
-                  icon: FaIcon(
-                    FontAwesomeIcons.node,
-                    color: Color(0xff53f6aa),
-                  ),
-                ),
-                IconButton(
-                  onPressed: null,
-                  icon: FaIcon(
-                    FontAwesomeIcons.react,
-                    color: Color(0xff53f6aa),
-                  ),
-                ),
-              ],
-            )
+            _buildHelloWorld(),
+            _buildBlank(),
+            _buildRole("Backend developer"),
+            _buildBlank(),
+            _buildStatus("Interested and Studying Flutter"),
+            _buildBlank(),
+            _buildIconRow(_datalist),
           ],
         ),
       ),
     );
   }
-}
 
-class Intro2Page extends StatelessWidget {
-  const Intro2Page({super.key});
+  Row _buildIconRow(List<IconData> iconlist) {
+    List<Row> line = [];
+    List<Widget> l = [];
+    for (var s in iconlist) {
+      l.add(_buildIcon(s));
+    }
 
-  @override
-  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[...l],
+    );
+  }
+
+  IconButton _buildIcon(IconData icon_,
+      [Color color = const Color(0xff53f6aa), size]) {
+    return IconButton(
+      onPressed: null,
+      icon: FaIcon(
+        icon_,
+        color: color,
+      ),
+    );
+  }
+
+  Text _buildStatus(String status,
+      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+    return Text(
+      "Status : $status",
+      style: TextStyle(
+        color: color_,
+        fontSize: fontsize,
+        fontWeight: FontWeight.w100,
+      ),
+    );
+  }
+
+  Text _buildRole(String role,
+      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+    return Text(
+      "Role : $role",
+      style: TextStyle(
+        color: color_,
+        fontSize: fontsize,
+        fontWeight: FontWeight.w100,
+      ),
+    );
+  }
+
+  Padding _buildBlank() => const Padding(padding: EdgeInsets.all(5));
+
+  Container _buildHelloWorld(
+      {double fontsize = 30.0, Color color_ = const Color(0xff53f6aa)}) {
     return Container(
-      color: Color(0xff1C4B5F),
-      child: Center(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Text('My Business Card'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FlipCard(
-                        front: Container(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height:
-                                  MediaQuery.of(context).size.width * 9 / 16,
-                              child: Text('hello'),
-                            ),
-                          ),
-                        ),
-                        back: Container(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height:
-                                  MediaQuery.of(context).size.width * 9 / 16,
-                              child: Text('Bye'),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Hello World',
+            style: TextStyle(
+                color: color_, fontSize: fontsize, fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            width: 30,
+            height: 30,
+            child: AnimatedTextKit(
+              pause: const Duration(seconds: 0),
+              repeatForever: true,
+              animatedTexts: [
+                TyperAnimatedText(
+                  '_',
+                  speed: Duration(milliseconds: 400),
+                  textStyle: TextStyle(
+                      color: color_,
+                      fontSize: fontsize,
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

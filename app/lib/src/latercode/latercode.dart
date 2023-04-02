@@ -313,3 +313,85 @@ Container infoCard(BuildContext context) {
     ),
   );
 }
+
+class Intro2Page extends StatelessWidget {
+  const Intro2Page({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Color(0xff1C4B5F),
+      child: Center(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Text('My Business Card'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FlipCard(
+                        front: Container(
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              height:
+                                  MediaQuery.of(context).size.width * 9 / 16,
+                              child: Text('hello'),
+                            ),
+                          ),
+                        ),
+                        back: Container(
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              height:
+                                  MediaQuery.of(context).size.width * 9 / 16,
+                              child: Text('Bye'),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Pages extends StatelessWidget {
+  final text;
+  final color;
+  Pages({this.text, this.color});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      child: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                text,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+              ),
+            ]),
+      ),
+    );
+  }
+}

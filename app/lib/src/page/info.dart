@@ -20,29 +20,25 @@ class InfoPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildblank(),
             MyCard(),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildblank(),
             AboutMeWidget(),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildblank(),
             MyTimeline(),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildblank(),
             MyExp(),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildblank(),
             MySkill(),
           ],
         ),
       ),
+    );
+  }
+
+  Padding _buildblank([double d = 20.0]) {
+    return Padding(
+      padding: EdgeInsets.all(d),
     );
   }
 }

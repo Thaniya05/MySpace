@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "286cbe5bf1ca23b96c38871f3ef0e10820cc055303981d4b22329dc39ef29347"
-build_start_time: [1679211049, 293479919]
-build_end_time: [1679211072, 229550838]
-inputs:
-  "/Users/thaniya/Documents/MyProject/Demo/FastWorkDemo-Flutter/fastworkdemo/macos/Flutter/GeneratedPluginRegistrant.swift": [1679210999, 161968708]
-  "/Users/thaniya/Documents/MyProject/Demo/FastWorkDemo-Flutter/fastworkdemo/macos/Runner/AppDelegate.swift": [1671141058, 0]
-  "/Users/thaniya/Documents/MyProject/Demo/FastWorkDemo-Flutter/fastworkdemo/macos/Runner/MainFlutterWindow.swift": [1671141058, 0]
