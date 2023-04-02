@@ -21,7 +21,7 @@ class InfoPage extends StatelessWidget {
         child: Column(
           children: [
             _buildblank(),
-            MyCard(),
+            const MyCard(),
             _buildblank(),
             AboutMeWidget(),
             _buildblank(),

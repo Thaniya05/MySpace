@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 
-String test =
-    "ข้อความที่ยาวมากๆ แต่ไม่รู้จะยาวแค่ไหนก็เลยว่าจะลองว่ามันยาวจริงมั้ย เค สรุปจริง";
+//default value
+const String defaultDetails = "I'am Backend Developer.";
+const Color defaultColor = Color(0xff53f6aa);
+const double defaultAboutmeSizeText = 30.0;
+const double defaultDetailsSizeText = 16.0;
+const Color defaultColorDetails = Colors.white;
+const Color defaultColorBgCard = Color.fromARGB(255, 63, 113, 134);
 
 class AboutMeWidget extends StatelessWidget {
-  const AboutMeWidget({super.key});
+  double aboutmeSizeText;
+  String details;
+  Color aboutmeColor;
+  double detailsSizeText;
+  Color detailsColor;
+  Color backgroundCardColor;
+
+  AboutMeWidget({
+    super.key,
+    this.aboutmeSizeText = defaultAboutmeSizeText,
+    this.details = defaultDetails,
+    this.aboutmeColor = defaultColor,
+    this.detailsSizeText = defaultDetailsSizeText,
+    this.detailsColor = defaultColorDetails,
+    this.backgroundCardColor = defaultColorBgCard,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,22 +36,22 @@ class AboutMeWidget extends StatelessWidget {
           Text(
             "About me",
             style: TextStyle(
-                color: Color(0xff53f6aa),
-                fontSize: 30,
+                color: aboutmeColor,
+                fontSize: aboutmeSizeText,
                 fontWeight: FontWeight.w400),
           ),
-          Padding(padding: EdgeInsets.all(20)),
+          _buildBlank(),
           Card(
-            color: Color.fromARGB(255, 63, 113, 134),
+            color: backgroundCardColor,
             elevation: 5,
             child: Center(
               child: Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: Text(
-                  test,
+                  details,
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                      color: detailsColor,
+                      fontSize: detailsSizeText,
                       fontWeight: FontWeight.w100),
                 ),
               ),
@@ -41,4 +61,6 @@ class AboutMeWidget extends StatelessWidget {
       ),
     );
   }
+
+  Padding _buildBlank([double d = 20.0]) => Padding(padding: EdgeInsets.all(d));
 }

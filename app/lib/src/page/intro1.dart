@@ -139,7 +139,7 @@ class Intro1Page extends StatelessWidget {
               animatedTexts: [
                 TyperAnimatedText(
                   '_',
-                  speed: Duration(milliseconds: 400),
+                  speed: const Duration(milliseconds: 400),
                   textStyle: TextStyle(
                       color: color_,
                       fontSize: fontsize,
