@@ -34,6 +34,7 @@ class IntroPage extends StatelessWidget {
   }
 }
 
+//data JSON
 List<IconData> _datalist = [
   FontAwesomeIcons.squareJs,
   FontAwesomeIcons.html5,
