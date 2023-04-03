@@ -44,6 +44,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   font_awesome_flutter: ^10.4.0
   timelines: ^0.1.0
+  filter_list: ^1.0.2
+  getwidget: ^3.0.1
 
 dev_dependencies:
   flutter_test:

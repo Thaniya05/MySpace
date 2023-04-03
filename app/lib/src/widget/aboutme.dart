@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 //default value
+
 const String defaultDetails = "I'am Backend Developer.";
 const Color defaultColor = Color(0xff53f6aa);
 const double defaultAboutmeSizeText = 30.0;
@@ -15,16 +16,17 @@ class AboutMeWidget extends StatelessWidget {
   double detailsSizeText;
   Color detailsColor;
   Color backgroundCardColor;
+  String topic;
 
-  AboutMeWidget({
-    super.key,
-    this.aboutmeSizeText = defaultAboutmeSizeText,
-    this.details = defaultDetails,
-    this.aboutmeColor = defaultColor,
-    this.detailsSizeText = defaultDetailsSizeText,
-    this.detailsColor = defaultColorDetails,
-    this.backgroundCardColor = defaultColorBgCard,
-  });
+  AboutMeWidget(
+      {super.key,
+      this.aboutmeSizeText = defaultAboutmeSizeText,
+      this.details = defaultDetails,
+      this.aboutmeColor = defaultColor,
+      this.detailsSizeText = defaultDetailsSizeText,
+      this.detailsColor = defaultColorDetails,
+      this.backgroundCardColor = defaultColorBgCard,
+      this.topic = "About me"});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class AboutMeWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "About me",
+            topic,
             style: TextStyle(
                 color: aboutmeColor,
                 fontSize: aboutmeSizeText,

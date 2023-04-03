@@ -1,5 +1,6 @@
 import 'package:fastworkdemo/src/page/info.dart';
 import 'package:fastworkdemo/src/page/intro1.dart';
+import 'package:fastworkdemo/src/page/myproject.dart';
 import 'package:fastworkdemo/src/widget/intro.dart';
 import 'package:fastworkdemo/src/widget/mainpage.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +49,7 @@ class MainPage extends StatelessWidget {
             children: [
               InfoPage(),
               IntroPage(),
-              Center(
-                child: Text('Tab3'),
-              ),
+              MyProject(),
             ],
           ),
         ),
