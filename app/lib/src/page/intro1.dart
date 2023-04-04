@@ -6,6 +6,7 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:getwidget/getwidget.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -63,9 +64,34 @@ class Intro1Page extends StatelessWidget {
             _buildStatus("Interested and Studying Flutter"),
             _buildBlank(),
             _buildIconRow(_datalist),
+            _buildBlank(),
           ],
         ),
       ),
+    );
+  }
+
+  Row _buildButtonRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Card(
+          elevation: 3,
+          color: Colors.redAccent,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            child: Text('About Me'),
+          ),
+        ),
+        Card(
+          elevation: 3,
+          color: Colors.redAccent,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            child: Text('About Me'),
+          ),
+        )
+      ],
     );
   }
 

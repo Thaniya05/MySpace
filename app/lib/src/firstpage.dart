@@ -15,6 +15,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 1,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -28,6 +29,8 @@ class MainPage extends StatelessWidget {
           ),
           backgroundColor: Color(0xff1C4B5F),
           bottom: TabBar(
+            unselectedLabelColor: Color.fromARGB(255, 213, 213, 213),
+            indicatorColor: Colors.amber,
             tabs: [
               Tab(
                 icon: Icon(
@@ -36,10 +39,13 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               Tab(
-                icon: Icon(Icons.home),
+                icon: Icon(
+                  Icons.home,
+                  color: Color(0xff53f6aa),
+                ),
               ),
               Tab(
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.home, color: Color(0xff53f6aa)),
               ),
             ],
           ),
