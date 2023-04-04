@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -74,11 +75,11 @@ class Intro1Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _buildHelloWorld(),
+            _buildHelloWorld(context),
             _buildBlank(),
-            _buildRole("Backend developer"),
+            _buildRole("Backend developer", context),
             _buildBlank(),
-            _buildStatus("Interested and Studying Flutter"),
+            _buildStatus("Interested and Studying Flutter", context),
             _buildBlank(),
             _buildIconRow(_datalist),
             _buildBlank(),
@@ -136,8 +137,11 @@ class Intro1Page extends StatelessWidget {
     );
   }
 
-  Text _buildStatus(String status,
-      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+  Text _buildStatus(String status, BuildContext context,
+      [double fontsize = 24.0, Color color_ = const Color(0xff53f6aa)]) {
+    if (context.isPhone) {
+      fontsize = 16.0;
+    }
     return Text(
       "Status : $status",
       style: TextStyle(
@@ -148,8 +152,11 @@ class Intro1Page extends StatelessWidget {
     );
   }
 
-  Text _buildRole(String role,
-      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+  Text _buildRole(String role, BuildContext context,
+      [double fontsize = 24.0, Color color_ = const Color(0xff53f6aa)]) {
+    if (context.isPhone) {
+      fontsize = 16.0;
+    }
     return Text(
       "Role : $role",
       style: TextStyle(
@@ -162,20 +169,30 @@ class Intro1Page extends StatelessWidget {
 
   Padding _buildBlank() => const Padding(padding: EdgeInsets.all(5));
 
-  Container _buildHelloWorld(
-      {double fontsize = 30.0, Color color_ = const Color(0xff53f6aa)}) {
+  Container _buildHelloWorld(BuildContext context,
+      {double fontsize = 45.0, Color color_ = const Color(0xff53f6aa)}) {
+    if (context.isPhone) {
+      fontsize = 30.0;
+    }
+
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          AutoSizeText(
             'Hello World',
             style: TextStyle(
-                color: color_, fontSize: fontsize, fontWeight: FontWeight.w400),
+              color: color_,
+              fontSize: fontsize,
+              fontWeight: FontWeight.w400,
+            ),
+            minFontSize: 30.0,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
-            width: 30,
-            height: 30,
+            width: fontsize,
+            height: fontsize,
             child: AnimatedTextKit(
               pause: const Duration(seconds: 0),
               repeatForever: true,
