@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:timelines/timelines.dart';
 
 class MyTimeline extends StatelessWidget {
@@ -21,8 +22,15 @@ class MyTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> list = jsonDecode(_json);
 
+    double widthsize = 0.6;
+    if (context.isPhone) {
+      widthsize = 0.8;
+    } else {
+      widthsize = 0.6;
+    }
+
     return Container(
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery.of(context).size.width * widthsize,
         child: Column(
           children: [
             Text(
@@ -39,7 +47,7 @@ class MyTimeline extends StatelessWidget {
               color: backgrondColor,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
-                height: 400,
+                height: 500,
                 child: Timeline.tileBuilder(
                   theme: TimelineThemeData(
                       connectorTheme: ConnectorThemeData(
@@ -99,4 +107,4 @@ class Timelineitem {
 }
 
 String _json =
-    '[{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "}]';
+    '[{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "}]';

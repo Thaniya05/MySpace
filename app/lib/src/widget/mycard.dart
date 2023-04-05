@@ -11,58 +11,35 @@ class MyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width_size = 0.6;
+    double width_size = 0.45;
     double name_card_size = 30.0;
     double role_card_size = 26.0;
     double detail_card_size = 16.0;
-    if (context.isPhone) {
+    if (context.isPhone || context.width < 895) {
       width_size = 0.9;
       name_card_size = 18.0;
       role_card_size = 16.0;
       detail_card_size = 10.0;
-    } /*
-    return FlipCard(
-      front: Container(
-        child: _buildCard(context, width_size, name_card_size, role_card_size, detail_card_size),
-      ),
-      back: Container(
-        child: Card(
-          color: Color.fromARGB(255, 63, 113, 134),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          elevation: 10,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.width * 9 / 16,
-            child: Container(
-              margin: EdgeInsets.all(20),
-              //color: Colors.white,
-              child: Column(
-                children: [
-                  Text('Skill / Experience'),
-                  Text('Main'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      mySkillIcon(FontAwesomeIcons.html5),
-                      mySkillIcon(FontAwesomeIcons.nodeJs),
-                      mySkillIcon(Icons.flutter_dash),
-                      mySkillIcon(FontAwesomeIcons.js),
-                      mySkillIcon(FontAwesomeIcons.react)
-                    ],
-                  ),
-                  Text('sub'),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  */
+    } else {
+      print(context.width);
+      width_size = 0.45;
+      name_card_size = 30.0;
+      role_card_size = 26.0;
+      detail_card_size = 16.0;
+    }
+
     return _buildCard(
         context, width_size, name_card_size, role_card_size, detail_card_size);
+  }
+
+  Card _buildCard1(BuildContext context) {
+    return Card(
+      color: Color.fromARGB(255, 63, 113, 134),
+      elevation: 10,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+    );
   }
 
   Card _buildCard(BuildContext context, double width_size,
@@ -87,8 +64,8 @@ class MyCard extends StatelessWidget {
                   //color: Colors.blue[100],
                   child: Image.asset(
                     'assets/pic/profile.jpg',
-                    height: 500,
-                    width: 500,
+                    height: 300,
+                    width: 300,
                   ),
                 ),
               ),
@@ -139,6 +116,11 @@ class MyCard extends StatelessWidget {
                           'Thaniya Boonbutra',
                           detail_card_size,
                         ),
+                        detailCardMethod(
+                          FontAwesomeIcons.locationPin,
+                          'Khonkaen , Thailand',
+                          detail_card_size,
+                        )
                       ],
                     ),
                   ),
@@ -164,8 +146,10 @@ class MyCard extends StatelessWidget {
         ),
         AutoSizeText(
           str,
-          style:
-              TextStyle(color: Color(0xff53f6aa), fontWeight: FontWeight.w400),
+          style: TextStyle(
+            color: Color(0xff53f6aa),
+            fontWeight: FontWeight.w400,
+          ),
           minFontSize: 10.0,
         ),
       ],
@@ -182,3 +166,47 @@ class MyCard extends StatelessWidget {
     );
   }
 }
+
+
+
+   /*
+    return FlipCard(
+      front: Container(
+        child: _buildCard(context, width_size, name_card_size, role_card_size, detail_card_size),
+      ),
+      back: Container(
+        child: Card(
+          color: Color.fromARGB(255, 63, 113, 134),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          elevation: 10,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.width * 9 / 16,
+            child: Container(
+              margin: EdgeInsets.all(20),
+              //color: Colors.white,
+              child: Column(
+                children: [
+                  Text('Skill / Experience'),
+                  Text('Main'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      mySkillIcon(FontAwesomeIcons.html5),
+                      mySkillIcon(FontAwesomeIcons.nodeJs),
+                      mySkillIcon(Icons.flutter_dash),
+                      mySkillIcon(FontAwesomeIcons.js),
+                      mySkillIcon(FontAwesomeIcons.react)
+                    ],
+                  ),
+                  Text('sub'),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  */

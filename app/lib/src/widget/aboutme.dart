@@ -1,11 +1,16 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 //default value
 
-const String defaultDetails = "I'am Backend Developer.";
+const String test =
+    "มีความสนใจและตั้งใจที่จะเป็น Fronend และ Backend Developer พร้อมที่จะเรียนรู้ Language programming และเครื่องมือใหม่ๆ ที่มีความน่าสนใจ หรือสามารถนำมาประยุกต์กับงานอยู่เสมอ";
+
+const String defaultDetails = test;
 const Color defaultColor = Color(0xff53f6aa);
 const double defaultAboutmeSizeText = 30.0;
-const double defaultDetailsSizeText = 16.0;
+const double defaultDetailsSizeText = 20.0;
 const Color defaultColorDetails = Colors.white;
 const Color defaultColorBgCard = Color.fromARGB(255, 63, 113, 134);
 
@@ -30,8 +35,16 @@ class AboutMeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double widthSize = 0.6;
+    if (context.isPhone) {
+      widthSize = 0.8;
+      detailsSizeText = 16.0;
+    } else {
+      widthSize = 0.6;
+      detailsSizeText = defaultDetailsSizeText;
+    }
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * widthSize,
       //color: Colors.white,
       child: Column(
         children: [
@@ -48,13 +61,14 @@ class AboutMeWidget extends StatelessWidget {
             elevation: 5,
             child: Center(
               child: Container(
-                margin: const EdgeInsets.all(20),
-                child: Text(
+                margin: const EdgeInsets.all(40),
+                child: AutoSizeText(
                   details,
                   style: TextStyle(
                       color: detailsColor,
                       fontSize: detailsSizeText,
                       fontWeight: FontWeight.w100),
+                  minFontSize: 16,
                 ),
               ),
             ),
