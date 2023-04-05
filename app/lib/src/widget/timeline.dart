@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:timelines/timelines.dart';
+import '../constant.dart' as constant;
 
 class MyTimeline extends StatelessWidget {
   double timelineFontsize;
@@ -22,11 +23,11 @@ class MyTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> list = jsonDecode(_json);
 
-    double widthsize = 0.6;
+    double widthsize = 0.4;
     if (context.isPhone) {
       widthsize = 0.8;
     } else {
-      widthsize = 0.6;
+      widthsize = 0.4;
     }
 
     return Container(
@@ -46,7 +47,7 @@ class MyTimeline extends StatelessWidget {
               elevation: 10,
               color: backgrondColor,
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.7,
+                width: MediaQuery.of(context).size.width * widthsize,
                 height: 500,
                 child: Timeline.tileBuilder(
                   theme: TimelineThemeData(
@@ -64,10 +65,12 @@ class MyTimeline extends StatelessWidget {
                             '${Timelineitem.fromJson(list[index]).month} ${Timelineitem.fromJson(list[index]).year}',
                             style: TextStyle(color: yearColor),
                           ),
-                          Text(
-                            '${Timelineitem.fromJson(list[index]).details}',
-                            style: TextStyle(
-                              color: detailsColor,
+                          Center(
+                            child: Text(
+                              '${Timelineitem.fromJson(list[index]).details}',
+                              style: TextStyle(
+                                color: detailsColor,
+                              ),
                             ),
                           ),
                         ],
@@ -106,5 +109,4 @@ class Timelineitem {
       {'name': month, 'year': year, 'details': details};
 }
 
-String _json =
-    '[{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "}]';
+String _json = constant.TIMELINE_JSON;

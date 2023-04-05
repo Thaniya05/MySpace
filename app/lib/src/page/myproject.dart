@@ -9,8 +9,7 @@ import 'package:getwidget/getwidget.dart';
 import '../widget/game24.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const String test =
-    "มีความสนใจและตั้งใจที่จะเป็น Fronend และ Backend Developer พร้อมที่จะเรียนรู้ Language programming และเครื่องมือใหม่ๆ ที่มีความน่าสนใจ หรือสามารถนำมาประยุกต์กับงานอยู่เสมอ";
+import '../constant.dart' as constant;
 
 class MyProject extends StatelessWidget {
   const MyProject({super.key});
@@ -37,6 +36,7 @@ class MyProject extends StatelessWidget {
             Center(
               child: AboutMeWidget(
                 topic: "Project / Work History",
+                details: constant.MYPROJECT_DETAILS,
               ),
             ),
             _buildBlank(),
@@ -44,12 +44,60 @@ class MyProject extends StatelessWidget {
               context,
               widthsize,
               detailsize,
-              details: '${test}',
+              details: constant.MYPROJECT_MYSPACE,
               topic: 'MySpace',
+              alpha: true,
+              mini: true,
+              isfpic: false,
+              pathpic: '',
+            ),
+            _buildBlank(),
+            _buildHistoryWork(context, widthsize, detailsize,
+                details: constant.MYPROJECT_WEBAPP,
+                topic: 'Web Application',
+                work: true,
+                success: true,
+                progress: true,
+                isfpic: true,
+                pathpic: 'assets/pic/webapp.jpg',
+                width: 500,
+                height: 350),
+            _buildBlank(),
+            _buildHistoryWork(
+              context,
+              widthsize,
+              detailsize,
+              details: constant.MYPROJECT_DEMOGAME,
+              topic: 'Game Demo',
+              mini: true,
               success: true,
               isfpic: true,
-              pathpic: 'assets/pic/profile.jpg',
-            )
+              pathpic: 'assets/pic/gamedemo.jpg',
+            ),
+            _buildBlank(),
+            _buildHistoryWork(
+              context,
+              widthsize,
+              detailsize,
+              details: constant.MYPROJECT_GAME24,
+              topic: 'Game 24',
+              alpha: true,
+              coming: true,
+              isfpic: false,
+              pathpic: '',
+            ),
+            _buildBlank(),
+            _buildHistoryWork(
+              context,
+              widthsize,
+              detailsize,
+              details: constant.MYPROJECT_WIDGETTOPDF,
+              topic: 'Widget to PDF',
+              alpha: true,
+              coming: true,
+              isfpic: false,
+              pathpic: '',
+            ),
           ],
         ),
       ),
@@ -81,6 +129,8 @@ class MyProject extends StatelessWidget {
     bool work = false,
     bool isfpic = false,
     String pathpic = "",
+    double height = 200,
+    double width = 200,
   }) {
     return Container(
       width: MediaQuery.of(context).size.width * widthsize,
@@ -123,7 +173,12 @@ class MyProject extends StatelessWidget {
                     minFontSize: 16,
                   ),
                   _buildBlank(10),
-                  _buildImg(ispic: isfpic, path: pathpic),
+                  _buildImg(
+                    ispic: isfpic,
+                    path: pathpic,
+                    height: height,
+                    width: width,
+                  ),
                   _buildBlank(15),
                 ],
               ),
@@ -134,12 +189,16 @@ class MyProject extends StatelessWidget {
     );
   }
 
-  Container _buildImg({bool ispic = false, String path = ''}) {
+  Container _buildImg(
+      {bool ispic = false,
+      String path = '',
+      double height = 200,
+      double width = 200}) {
     if (ispic) {
       return Container(
         child: Image.asset(path),
-        height: 200,
-        width: 200,
+        height: height,
+        width: width,
       );
     } else {
       return Container();

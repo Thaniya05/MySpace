@@ -1,13 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constant.dart' as constant;
 
 //default value
 
-const String test =
-    "มีความสนใจและตั้งใจที่จะเป็น Fronend และ Backend Developer พร้อมที่จะเรียนรู้ Language programming และเครื่องมือใหม่ๆ ที่มีความน่าสนใจ หรือสามารถนำมาประยุกต์กับงานอยู่เสมอ";
+//const String Details = constant.ABOUTME_DETAIL;
 
-const String defaultDetails = test;
+const String defaultDetails = "";
 const Color defaultColor = Color(0xff53f6aa);
 const double defaultAboutmeSizeText = 30.0;
 const double defaultDetailsSizeText = 20.0;

@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../constant.dart' as constant;
 
 List<String> _mylist = [
   "- ใช้ Javascript , Typescript ,React จัดการเกี่ยวกับการแสดงผลของเว็บทั้งหมด",
@@ -41,18 +42,26 @@ class MyExp extends StatelessWidget {
           _buildBlank(),
           _buildExpCard(
             context,
-            role: "Backend Developer",
-            company: "NewNN Company limited",
-            timeline: "april 2021 - present",
-            list: _mylist,
+            role: constant.EXP_ROLE_1,
+            company: constant.EXP_COMPANY_1,
+            timeline: constant.EXP_TIMELINE_1,
+            list: constant.EXP_LIST_1,
           ),
           _buildBlank(),
           _buildExpCard(
             context,
-            role: "Backend Developer",
-            company: "NewNN Company limited",
-            timeline: "april 2021 - present",
-            list: _mylist,
+            role: constant.EXP_ROLE_2,
+            company: constant.EXP_COMPANY_2,
+            timeline: constant.EXP_TIMELINE_2,
+            list: constant.EXP_LIST_2,
+          ),
+          _buildBlank(),
+          _buildExpCard(
+            context,
+            role: constant.EXP_ROLE_3,
+            company: constant.EXP_COMPANY_3,
+            timeline: constant.EXP_TIMELINE_3,
+            list: constant.EXP_LIST_3,
           ),
         ],
       ),

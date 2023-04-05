@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:getwidget/getwidget.dart';
+import '../constant.dart' as constant;
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -16,7 +17,7 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     if (context.isPhone) {
-      print("is mobile");
+      //print("is mobile");
       return CarouselSlider(
         options: CarouselOptions(
           height: height,
@@ -33,7 +34,7 @@ class IntroPage extends StatelessWidget {
         ],
       );
     } else {
-      print("is web");
+      //print("is web");
       return CarouselSlider(
         options: CarouselOptions(
           height: height,
@@ -77,11 +78,11 @@ class Intro1Page extends StatelessWidget {
           children: [
             _buildHelloWorld(context),
             _buildBlank(),
-            _buildRole("Backend developer", context),
+            _buildRole(constant.INTRO_ROLE, context),
             _buildBlank(),
-            _buildStatus("Interested and Studying Flutter", context),
+            _buildStatus(constant.INTRO_STATUS, context),
             _buildBlank(),
-            _buildIconRow(_datalist),
+            _buildIconRow(constant.INTRO_ICONS_LIST),
             _buildBlank(),
           ],
         ),

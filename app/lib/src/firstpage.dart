@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
             tabs: [
               Tab(
                 icon: Icon(
-                  Icons.home,
+                  Icons.person,
                   color: Color(0xff53f6aa),
                 ),
               ),
@@ -45,7 +45,7 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               Tab(
-                icon: Icon(Icons.home, color: Color(0xff53f6aa)),
+                icon: Icon(Icons.work_outline, color: Color(0xff53f6aa)),
               ),
             ],
           ),
