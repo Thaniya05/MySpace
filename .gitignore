@@ -17,7 +17,7 @@ app/android
 .packages
 .pub-cache/
 .pub/
-web/
+
 **/linux/
 **/macos/
 **/windows/
