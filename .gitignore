@@ -1,5 +1,8 @@
-app/build
 app/.dart_tool
+app/.metadata
+app/.idea
+app/ios
+app/android
 
 # Created by https://www.toptal.com/developers/gitignore/api/flutter
 # Edit at https://www.toptal.com/developers/gitignore?templates=flutter
@@ -14,12 +17,12 @@ app/.dart_tool
 .packages
 .pub-cache/
 .pub/
-web/
+
 **/linux/
 **/macos/
 **/windows/
 **/test/
-**/build/
+
 coverage/
 lib/generated_plugin_registrant.dart
 # For library packages, don’t commit the pubspec.lock file.

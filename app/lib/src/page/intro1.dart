@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:getwidget/getwidget.dart';
+import '../constant.dart' as constant;
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -13,7 +16,25 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    if (GetPlatform.isMobile) {
+    if (context.isPhone) {
+      //print("is mobile");
+      return CarouselSlider(
+        options: CarouselOptions(
+          height: height,
+          viewportFraction: 1.0,
+          enlargeCenterPage: false,
+          scrollDirection: Axis.vertical,
+          enableInfiniteScroll: false,
+          // autoPlay: false,
+        ),
+        items: [
+          Intro1Page(
+            text: 'Hello World',
+          )
+        ],
+      );
+    } else {
+      //print("is web");
       return CarouselSlider(
         options: CarouselOptions(
           height: height,
@@ -30,7 +51,6 @@ class IntroPage extends StatelessWidget {
         ],
       );
     }
-    return const Placeholder();
   }
 }
 
@@ -56,16 +76,41 @@ class Intro1Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _buildHelloWorld(),
+            _buildHelloWorld(context),
             _buildBlank(),
-            _buildRole("Backend developer"),
+            _buildRole(constant.INTRO_ROLE, context),
             _buildBlank(),
-            _buildStatus("Interested and Studying Flutter"),
+            _buildStatus(constant.INTRO_STATUS, context),
             _buildBlank(),
-            _buildIconRow(_datalist),
+            _buildIconRow(constant.INTRO_ICONS_LIST),
+            _buildBlank(),
           ],
         ),
       ),
+    );
+  }
+
+  Row _buildButtonRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Card(
+          elevation: 3,
+          color: Colors.redAccent,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            child: Text('About Me'),
+          ),
+        ),
+        Card(
+          elevation: 3,
+          color: Colors.redAccent,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            child: Text('About Me'),
+          ),
+        )
+      ],
     );
   }
 
@@ -93,8 +138,11 @@ class Intro1Page extends StatelessWidget {
     );
   }
 
-  Text _buildStatus(String status,
-      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+  Text _buildStatus(String status, BuildContext context,
+      [double fontsize = 24.0, Color color_ = const Color(0xff53f6aa)]) {
+    if (context.isPhone) {
+      fontsize = 16.0;
+    }
     return Text(
       "Status : $status",
       style: TextStyle(
@@ -105,8 +153,11 @@ class Intro1Page extends StatelessWidget {
     );
   }
 
-  Text _buildRole(String role,
-      [double fontsize = 16.0, Color color_ = const Color(0xff53f6aa)]) {
+  Text _buildRole(String role, BuildContext context,
+      [double fontsize = 24.0, Color color_ = const Color(0xff53f6aa)]) {
+    if (context.isPhone) {
+      fontsize = 16.0;
+    }
     return Text(
       "Role : $role",
       style: TextStyle(
@@ -119,27 +170,37 @@ class Intro1Page extends StatelessWidget {
 
   Padding _buildBlank() => const Padding(padding: EdgeInsets.all(5));
 
-  Container _buildHelloWorld(
-      {double fontsize = 30.0, Color color_ = const Color(0xff53f6aa)}) {
+  Container _buildHelloWorld(BuildContext context,
+      {double fontsize = 45.0, Color color_ = const Color(0xff53f6aa)}) {
+    if (context.isPhone) {
+      fontsize = 30.0;
+    }
+
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          AutoSizeText(
             'Hello World',
             style: TextStyle(
-                color: color_, fontSize: fontsize, fontWeight: FontWeight.w400),
+              color: color_,
+              fontSize: fontsize,
+              fontWeight: FontWeight.w400,
+            ),
+            minFontSize: 30.0,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
-            width: 30,
-            height: 30,
+            width: fontsize,
+            height: fontsize,
             child: AnimatedTextKit(
               pause: const Duration(seconds: 0),
               repeatForever: true,
               animatedTexts: [
                 TyperAnimatedText(
                   '_',
-                  speed: Duration(milliseconds: 400),
+                  speed: const Duration(milliseconds: 400),
                   textStyle: TextStyle(
                       color: color_,
                       fontSize: fontsize,

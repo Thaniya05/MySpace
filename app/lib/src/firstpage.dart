@@ -1,5 +1,6 @@
 import 'package:fastworkdemo/src/page/info.dart';
 import 'package:fastworkdemo/src/page/intro1.dart';
+import 'package:fastworkdemo/src/page/myproject.dart';
 import 'package:fastworkdemo/src/widget/intro.dart';
 import 'package:fastworkdemo/src/widget/mainpage.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 1,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -27,7 +29,15 @@ class MainPage extends StatelessWidget {
           ),
           backgroundColor: Color(0xff1C4B5F),
           bottom: TabBar(
+            unselectedLabelColor: Color.fromARGB(255, 213, 213, 213),
+            indicatorColor: Colors.amber,
             tabs: [
+              Tab(
+                icon: Icon(
+                  Icons.person,
+                  color: Color(0xff53f6aa),
+                ),
+              ),
               Tab(
                 icon: Icon(
                   Icons.home,
@@ -35,10 +45,7 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               Tab(
-                icon: Icon(Icons.home),
-              ),
-              Tab(
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.work_outline, color: Color(0xff53f6aa)),
               ),
             ],
           ),
@@ -48,9 +55,7 @@ class MainPage extends StatelessWidget {
             children: [
               InfoPage(),
               IntroPage(),
-              Center(
-                child: Text('Tab3'),
-              ),
+              MyProject(),
             ],
           ),
         ),

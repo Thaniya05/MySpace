@@ -1,38 +1,74 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../constant.dart' as constant;
 
-String test =
-    "ข้อความที่ยาวมากๆ แต่ไม่รู้จะยาวแค่ไหนก็เลยว่าจะลองว่ามันยาวจริงมั้ย เค สรุปจริง";
+//default value
+
+//const String Details = constant.ABOUTME_DETAIL;
+
+const String defaultDetails = "";
+const Color defaultColor = Color(0xff53f6aa);
+const double defaultAboutmeSizeText = 30.0;
+const double defaultDetailsSizeText = 20.0;
+const Color defaultColorDetails = Colors.white;
+const Color defaultColorBgCard = Color.fromARGB(255, 63, 113, 134);
 
 class AboutMeWidget extends StatelessWidget {
-  const AboutMeWidget({super.key});
+  double aboutmeSizeText;
+  String details;
+  Color aboutmeColor;
+  double detailsSizeText;
+  Color detailsColor;
+  Color backgroundCardColor;
+  String topic;
+
+  AboutMeWidget(
+      {super.key,
+      this.aboutmeSizeText = defaultAboutmeSizeText,
+      this.details = defaultDetails,
+      this.aboutmeColor = defaultColor,
+      this.detailsSizeText = defaultDetailsSizeText,
+      this.detailsColor = defaultColorDetails,
+      this.backgroundCardColor = defaultColorBgCard,
+      this.topic = "About me"});
 
   @override
   Widget build(BuildContext context) {
+    double widthSize = 0.6;
+    if (context.isPhone) {
+      widthSize = 0.8;
+      detailsSizeText = 16.0;
+    } else {
+      widthSize = 0.6;
+      detailsSizeText = defaultDetailsSizeText;
+    }
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * widthSize,
       //color: Colors.white,
       child: Column(
         children: [
           Text(
-            "About me",
+            topic,
             style: TextStyle(
-                color: Color(0xff53f6aa),
-                fontSize: 30,
+                color: aboutmeColor,
+                fontSize: aboutmeSizeText,
                 fontWeight: FontWeight.w400),
           ),
-          Padding(padding: EdgeInsets.all(20)),
+          _buildBlank(),
           Card(
-            color: Color.fromARGB(255, 63, 113, 134),
+            color: backgroundCardColor,
             elevation: 5,
             child: Center(
               child: Container(
-                margin: EdgeInsets.all(20),
-                child: Text(
-                  test,
+                margin: const EdgeInsets.all(40),
+                child: AutoSizeText(
+                  details,
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                      color: detailsColor,
+                      fontSize: detailsSizeText,
                       fontWeight: FontWeight.w100),
+                  minFontSize: 16,
                 ),
               ),
             ),
@@ -41,4 +77,6 @@ class AboutMeWidget extends StatelessWidget {
       ),
     );
   }
+
+  Padding _buildBlank([double d = 20.0]) => Padding(padding: EdgeInsets.all(d));
 }

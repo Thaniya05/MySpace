@@ -1,43 +1,60 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:timelines/timelines.dart';
+import '../constant.dart' as constant;
 
 class MyTimeline extends StatelessWidget {
-  const MyTimeline({super.key});
+  double timelineFontsize;
+  Color topicColor;
+  Color backgrondColor;
+  Color yearColor;
+  Color detailsColor;
+  MyTimeline(
+      {super.key,
+      this.timelineFontsize = 30.0,
+      this.topicColor = const Color(0xff53f6aa),
+      this.backgrondColor = const Color.fromARGB(255, 63, 113, 134),
+      this.yearColor = Colors.amber,
+      this.detailsColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {
     List<dynamic> list = jsonDecode(_json);
 
+    double widthsize = 0.4;
+    if (context.isPhone) {
+      widthsize = 0.8;
+    } else {
+      widthsize = 0.4;
+    }
+
     return Container(
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery.of(context).size.width * widthsize,
         child: Column(
           children: [
             Text(
               "Timeline",
               style: TextStyle(
-                  color: Color(0xff53f6aa),
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400),
+                color: topicColor,
+                fontSize: timelineFontsize,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
+            _buildBlank(),
             Card(
               elevation: 10,
-              color: Color.fromARGB(255, 63, 113, 134),
+              color: backgrondColor,
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                height: 400,
+                width: MediaQuery.of(context).size.width * widthsize,
+                height: 500,
                 child: Timeline.tileBuilder(
                   theme: TimelineThemeData(
                       connectorTheme: ConnectorThemeData(
-                        color: Color(0xff53f6aa),
+                        color: topicColor,
                       ),
-                      indicatorTheme:
-                          IndicatorThemeData(color: Color(0xff53f6aa))),
+                      indicatorTheme: IndicatorThemeData(color: topicColor)),
                   builder: TimelineTileBuilder.fromStyle(
                     contentsAlign: ContentsAlign.alternating,
                     contentsBuilder: (context, index) => Padding(
@@ -46,14 +63,14 @@ class MyTimeline extends StatelessWidget {
                         children: [
                           Text(
                             '${Timelineitem.fromJson(list[index]).month} ${Timelineitem.fromJson(list[index]).year}',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                            style: TextStyle(color: yearColor),
                           ),
-                          Text(
-                            '${Timelineitem.fromJson(list[index]).details}',
-                            style: TextStyle(
-                              color: Colors.white,
+                          Center(
+                            child: Text(
+                              '${Timelineitem.fromJson(list[index]).details}',
+                              style: TextStyle(
+                                color: detailsColor,
+                              ),
                             ),
                           ),
                         ],
@@ -66,6 +83,12 @@ class MyTimeline extends StatelessWidget {
             ),
           ],
         ));
+  }
+
+  Padding _buildBlank([double d = 20.0]) {
+    return Padding(
+      padding: EdgeInsets.all(d),
+    );
   }
 }
 
@@ -86,5 +109,4 @@ class Timelineitem {
       {'name': month, 'year': year, 'details': details};
 }
 
-String _json =
-    '[{"month" : "feb" , "year" : "2022" , "details" : "Work with "},{"month" : "feb" , "year" : "2022" , "details" : "Work with "}]';
+String _json = constant.TIMELINE_JSON;

@@ -11,14 +11,13 @@
 .packages
 .pub-cache/
 .pub/
-web/
 **/linux/
 **/macos/
 **/windows/
 **/test/
-**/build/
+build/app
+build/kotlin
 coverage/
-lib/generated_plugin_registrant.dart
 # For library packages, don’t commit the pubspec.lock file.
 # Regenerating the pubspec.lock file lets you test your package against the latest compatible versions of its dependencies.
 # See https://dart.dev/guides/libraries/private-files#pubspeclock

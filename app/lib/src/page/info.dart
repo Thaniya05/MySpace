@@ -8,6 +8,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../widget/mycard.dart';
 import '../widget/myexp.dart';
+import '../constant.dart' as constant;
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
@@ -21,9 +22,11 @@ class InfoPage extends StatelessWidget {
         child: Column(
           children: [
             _buildblank(),
-            MyCard(),
+            const MyCard(),
             _buildblank(),
-            AboutMeWidget(),
+            AboutMeWidget(
+              details: constant.ABOUTME_DETAIL,
+            ),
             _buildblank(),
             MyTimeline(),
             _buildblank(),
