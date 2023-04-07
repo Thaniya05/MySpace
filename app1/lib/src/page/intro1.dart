@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:getwidget/getwidget.dart';
 import '../constant.dart' as constant;
 
 class IntroPage extends StatelessWidget {
-  const IntroPage({super.key});
+  final TabController controller;
+  const IntroPage({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class IntroPage extends StatelessWidget {
         items: [
           Intro1Page(
             text: 'Hello World',
+            controller: controller,
           )
         ],
       );
@@ -47,6 +50,7 @@ class IntroPage extends StatelessWidget {
         items: [
           Intro1Page(
             text: 'Hello World',
+            controller: controller,
           )
         ],
       );
@@ -65,7 +69,8 @@ List<IconData> _datalist = [
 class Intro1Page extends StatelessWidget {
   final text;
   final color;
-  const Intro1Page({this.text, this.color});
+  final TabController controller;
+  const Intro1Page({this.text, this.color, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,8 @@ class Intro1Page extends StatelessWidget {
             _buildStatus(constant.INTRO_STATUS, context),
             _buildBlank(),
             _buildIconRow(constant.INTRO_ICONS_LIST),
-            _buildBlank(),
+            _buildBlank(10.0),
+            _buildButtonRow(),
           ],
         ),
       ),
@@ -94,22 +100,53 @@ class Intro1Page extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Card(
-          elevation: 3,
-          color: Colors.redAccent,
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Text('About Me'),
+        GestureDetector(
+          onTap: () {
+            controller.animateTo(0);
+          },
+          child: Card(
+            elevation: 10,
+            color: Color.fromARGB(255, 63, 113, 134),
+            child: Container(
+              width: 120,
+              height: 60,
+              child: Center(
+                child: Text(
+                  'About Me',
+                  style: GoogleFonts.sarabun(
+                    color: const Color(0xff53f6aa),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
-        Card(
-          elevation: 3,
-          color: Colors.redAccent,
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Text('About Me'),
+        _buildBlank(10),
+        GestureDetector(
+          onTap: () {
+            controller.animateTo(2);
+          },
+          child: Card(
+            elevation: 10,
+            color: Color.fromARGB(255, 63, 113, 134),
+            child: Container(
+              width: 120,
+              height: 60,
+              child: Center(
+                child: Text(
+                  'Work History',
+                  style: GoogleFonts.sarabun(
+                    color: const Color(0xff53f6aa),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -168,7 +205,9 @@ class Intro1Page extends StatelessWidget {
     );
   }
 
-  Padding _buildBlank() => const Padding(padding: EdgeInsets.all(5));
+  Padding _buildBlank([double d = 5.0]) {
+    return Padding(padding: EdgeInsets.all(d));
+  }
 
   Container _buildHelloWorld(BuildContext context,
       {double fontsize = 45.0, Color color_ = const Color(0xff53f6aa)}) {

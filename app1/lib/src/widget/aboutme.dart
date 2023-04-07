@@ -52,9 +52,10 @@ class AboutMeWidget extends StatelessWidget {
           Text(
             topic,
             style: GoogleFonts.sarabun(
-                color: aboutmeColor,
-                fontSize: aboutmeSizeText,
-                fontWeight: FontWeight.w400),
+              color: aboutmeColor,
+              fontSize: aboutmeSizeText,
+              fontWeight: FontWeight.w400,
+            ),
           ),
           _buildBlank(),
           Card(
@@ -66,9 +67,11 @@ class AboutMeWidget extends StatelessWidget {
                 child: AutoSizeText(
                   details,
                   style: GoogleFonts.sarabun(
-                      color: detailsColor,
-                      fontSize: detailsSizeText,
-                      fontWeight: FontWeight.w300),
+                    color: detailsColor,
+                    fontSize: detailsSizeText,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 1,
+                  ),
                   minFontSize: 16,
                 ),
               ),
