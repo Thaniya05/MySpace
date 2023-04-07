@@ -8,6 +8,7 @@ import '../widget/game24.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constant.dart' as constant;
+import '../widget/pdf.dart' as test;
 
 class MyProject extends StatelessWidget {
   const MyProject({super.key});
@@ -85,17 +86,6 @@ class MyProject extends StatelessWidget {
               pathpic: '',
             ),
             _buildBlank(),
-            _buildHistoryWork(
-              context,
-              widthsize,
-              detailsize,
-              details: constant.MYPROJECT_WIDGETTOPDF,
-              topic: 'Widget to PDF',
-              alpha: true,
-              coming: true,
-              isfpic: false,
-              pathpic: '',
-            ),
           ],
         ),
       ),

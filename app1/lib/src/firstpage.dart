@@ -8,12 +8,14 @@ import 'package:get/get.dart';
 import './widget/appbar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flip_card/flip_card.dart';
+import './controller/tabcontroller.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FirstPageTabController _mytab = Get.put(FirstPageTabController());
     return DefaultTabController(
       initialIndex: 1,
       length: 3,
@@ -29,32 +31,18 @@ class MainPage extends StatelessWidget {
           ),
           backgroundColor: Color(0xff1C4B5F),
           bottom: TabBar(
+            controller: _mytab.controller,
             unselectedLabelColor: Color.fromARGB(255, 213, 213, 213),
             indicatorColor: Colors.amber,
-            tabs: [
-              Tab(
-                icon: Icon(
-                  Icons.person,
-                  color: Color(0xff53f6aa),
-                ),
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.home,
-                  color: Color(0xff53f6aa),
-                ),
-              ),
-              Tab(
-                icon: Icon(Icons.work_outline, color: Color(0xff53f6aa)),
-              ),
-            ],
+            tabs: _mytab.myTabs,
           ),
         ),
         body: SafeArea(
           child: TabBarView(
+            controller: _mytab.controller,
             children: [
               InfoPage(),
-              IntroPage(),
+              IntroPage(controller: _mytab.controller),
               MyProject(),
             ],
           ),

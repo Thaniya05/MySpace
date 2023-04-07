@@ -15,19 +15,19 @@ const String ABOUTME_DETAILS =
     "มีความสนใจและตั้งใจที่จะเป็น Fronend และ Backend Developer โดยพร้อมที่จะเรียนรู้ Language programming และเครื่องมือใหม่ๆ ที่มีความน่าสนใจ หรือสามารถนำมาประยุกต์กับงานอยู่เสมอ ซึ่งสนใจเกี่ยวกับการทำ Web Application หรือ Mobile Application โดยตอน";
 
 const String ABOUTME_DETAIL =
-    "มีความถนัดทางด้านการใช้ Javascript , Typescript โดยจะทำในส่วนของการแสดงผลโดยใช้ HTML , React การดึงข้อมูล รวมไปถึงการสร้าง API ที่ใช้ในการติดต่อข้อมูลโดยใช้ NodeJS เป็นหลัก ซึ่งพร้อมจะศึกษาภาษา หรือเครื่องมือใหม่ๆอยู่เสมอ โดยตอนนี้กำลังสนใจการทำ Mobile Application รวมไปถึงการสร้าง Web โดยใช้ Flutter";
+    "มีความถนัดทางด้านการใช้ภาษา Javascript , Typescript โดยทำในส่วนของการแสดงผลโดยใช้ HTML , React และทำในส่วนการสร้าง API ที่ใช้ในการติดต่อแลกเปลี่ยนข้อมูลระหว่างส่วนของผู้ใช้งานกับ Database โดยใช้ NodeJS เป็นหลัก ซึ่งพร้อมจะเรียนรู้ และเครื่องมือใหม่ๆอยู่เสมอ ปัจจุบันสนใจและกำลังศึกษาการทำ Mobile Application รวมไปถึงการสร้าง Web Application โดยใช้ Flutter";
 
 //timeline.dart
 const String TIMELINE_JSON =
     '[{"month" : "March" , "year" : "2023" , "details" : "Present"},{"month" : "August" ,"year":"2021","details":"Backend Developer , NewNN CO.,LTD"},{"month" : "October" ,"year":"2018","details":"Game Developer (intern) , NewNN CO.,LTD"},{"month" : "August" ,"year":"2017","details":"Computer Engineering , Khonkaen University"},{"month" : "March" ,"year":"2015","details":"Graduation from Khonkean Wittayayon"},{"month" : " " ,"year":"2010-2014","details":"Computer Olmypic ( POSN ) KKU"}]';
 
 //myexp.dart
-const String EXP_ROLE_1 = "Backend Developer";
+const String EXP_ROLE_1 = "Full Stack Developer / Backend Developer";
 const String EXP_COMPANY_1 = "NewNN CO.,LTD";
 const String EXP_TIMELINE_1 = "Auguest 2021 - Present";
 const List<String> EXP_LIST_1 = [
-  "- ทำ Web Application โดยใช้ Javascript , Typescript  React ในส่วนของการแสดงผลทั้งหมดรวมถึง ฟังชั่นต่างๆ เช่น HTML to PDF , Autocomplete ",
-  "- ทำ API สำหรับการ CRUD และติดต่อ Database โดยใช้ NodeJS , Javascript ,Typescript",
+  "- ทำ Web Application โดยใช้ Javascript , Typescript  React ในการแสดงผล รวมถึง ฟังชั่นต่างๆ ที่ใช้บน Web Application",
+  "- ทำ API สำหรับ CRUD และติดต่อ Database ผ่าน ORM โดยใช้ NodeJS , Javascript ,Typescript",
   "- ทำ Mobile Application โดยใช้ Blazor ( C# )",
 ];
 
@@ -51,17 +51,18 @@ const List<String> EXP_LIST_3 = [
 //myproject.dart
 
 const String MYPROJECT_DETAILS =
-    "ตัวอย่างผลงาน หรือ Project ที่กำลังทำ ที่สามารถนำมานำเสนอบน MySpace ได้ โดยถ้าต้องการติดต่อเกี่ยวกับงาน หรือ Resume ที่เป็นข้อมูลตัวเต็ม สามารถติดต่อได้ที่ Email : thaniya14@gmail.com";
+    "ตัวอย่างผลงาน และ Project ที่กำลังดำเนินการ มานำเสนอบน MySpace โดยถ้าต้องการติดต่อเกี่ยวกับงาน หรือ Resume ที่เป็นข้อมูลตัวเต็ม สามารถติดต่อได้ที่ Email : thaniya14@gmail.com";
+const String MYPROJECT_EMAIL = "thaniya14@gmail.com";
 
 const String MYPROJECT_MYSPACE =
-    "MySpace เป็น Web Application ที่สร้างโดย Flutter ที่ทำขึ้นเพื่อฝึกฝนการใช้ Flutter รวมไปถึงเป็น Resume Online โดยในอนาคตจะพัฒนานำรายละเอียด ลูกเล่นต่างๆ  รวมไปถึงทำในส่วนของบทความมาลง และปรับปรุงแก้ไขใน Responsive ให้มีประสิทธิภาพมากยิ่งขึ้น";
+    "MySpace เป็น Web Application สร้างโดยใช้ Flutter เพื่อฝึกฝนการใช้ Flutter รวมไปถึงเป็น Resume Online โดยในอนาคตจะพัฒนาทำรายละเอียด บทความ ลูกเล่น  และปรับปรุงแก้ไจให้มีประสิทธิภาพมากยิ่งขึ้น";
 
 const String MYPROJECT_DEMOGAME =
     "Game Demo ที่สร้างด้วย Unreal engine 4 โดยเป็นเกมต่อสู้แนว Turn-based โดยได้ทำในส่วนของระบบการต่อสู้ทั้งหมดรวมไปถึงการเชื่อมต่อ socket เพื่อต่อสู้ระหว่างผู้เล่นทั้งสองฝั่ง";
 
 const String MYPROJECT_WEBAPP =
-    "สร้าง Web Application กับทางบริษัท เช่น เว็บจำหน่ายสินค้า โดยใช้ในส่วนของ HTML , React ,Typescript หรือในบางโปรเจคก็เป็นทาง Blazor และ Asp.net";
+    "สร้าง Web Application กับทางบริษัท NewNN CO.,LTD เช่น เว็บจำหน่ายสินค้า โดยใช้ HTML , React ,Typescript ในบางโปรเจคก็เป็นทาง Blazor และ Asp.net";
 const String MYPROJECT_GAME24 =
-    "สร้าง Wiget เกม 24 ที่สามารถนำมาเล่นได้ทั้งบน Web และ Mobile";
+    "สร้าง Widget เกม 24 ที่สามารถนำมาเล่นได้ทั้งบน Web และ Mobile อยู่ในขั้นตอนออกแบบและวางแผน";
 const String MYPROJECT_WIDGETTOPDF =
-    "Mini Project ที่จะสร้าง Widget ด้วย Flutter ที่มีลักษณะตกแต่งต่างๆแล้วนำมาแปลงเป็น PDF เพื่อใช้ในทำเป็น Resume ที่สามารถทำและแก้ไขออนไลน์";
+    "Mini Project ที่จะสร้างด้วย Flutter ที่จะสามารถสร้าง Resume Online แล้วสามารถแปลงออกมาในรูปแบบ PDF";
