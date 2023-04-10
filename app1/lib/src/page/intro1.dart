@@ -74,8 +74,9 @@ class Intro1Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
     return Container(
-      color: Color(0xff1C4B5F),
+      color: _theme.scaffoldBackgroundColor,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,14 +90,14 @@ class Intro1Page extends StatelessWidget {
             _buildBlank(),
             _buildIconRow(constant.INTRO_ICONS_LIST),
             _buildBlank(10.0),
-            _buildButtonRow(),
+            _buildButtonRow(context),
           ],
         ),
       ),
     );
   }
 
-  Row _buildButtonRow() {
+  Row _buildButtonRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -106,7 +107,7 @@ class Intro1Page extends StatelessWidget {
           },
           child: Card(
             elevation: 10,
-            color: Color.fromARGB(255, 63, 113, 134),
+            color: Theme.of(context).cardColor,
             child: Container(
               width: 120,
               height: 60,
@@ -130,7 +131,7 @@ class Intro1Page extends StatelessWidget {
           },
           child: Card(
             elevation: 10,
-            color: Color.fromARGB(255, 63, 113, 134),
+            color: Theme.of(context).cardColor,
             child: Container(
               width: 120,
               height: 60,

@@ -38,20 +38,10 @@ class MyCard extends StatelessWidget {
         context, width_size, name_card_size, role_card_size, detail_card_size);
   }
 
-  Card _buildCard1(BuildContext context) {
-    return Card(
-      color: Color.fromARGB(255, 63, 113, 134),
-      elevation: 10,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-    );
-  }
-
   Card _buildCard(BuildContext context, double width_size,
       double name_card_size, double role_card_size, double detail_card_size) {
     return Card(
-      color: Color.fromARGB(255, 63, 113, 134),
+      color: Theme.of(context).cardColor,
       elevation: 10,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),

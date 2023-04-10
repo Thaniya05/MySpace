@@ -16,6 +16,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FirstPageTabController _mytab = Get.put(FirstPageTabController());
+    final _theme = Theme.of(context);
     return DefaultTabController(
       initialIndex: 1,
       length: 3,
@@ -26,14 +27,14 @@ class MainPage extends StatelessWidget {
             "My Space",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Color(0xff53f6aa),
+              color: _theme.textTheme.headlineLarge!.color,
             ),
           ),
-          backgroundColor: Color(0xff1C4B5F),
+          backgroundColor: _theme.appBarTheme.backgroundColor,
           bottom: TabBar(
             controller: _mytab.controller,
-            unselectedLabelColor: Color.fromARGB(255, 213, 213, 213),
-            indicatorColor: Colors.amber,
+            unselectedLabelColor: _theme.tabBarTheme.unselectedLabelColor,
+            indicatorColor: _theme.tabBarTheme.indicatorColor,
             tabs: _mytab.myTabs,
           ),
         ),
