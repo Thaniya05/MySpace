@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
           headlineLarge: TextStyle(
             color: Color(0xff53f6aa),
           ),
+          labelMedium: TextStyle(
+            color: Color(0xff53f6aa),
+          ),
         ),
       ),
     );

@@ -115,7 +115,7 @@ class Intro1Page extends StatelessWidget {
                 child: Text(
                   'About Me',
                   style: GoogleFonts.sarabun(
-                    color: const Color(0xff53f6aa),
+                    color: Theme.of(context).textTheme.labelMedium!.color,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -139,7 +139,7 @@ class Intro1Page extends StatelessWidget {
                 child: Text(
                   'Work History',
                   style: GoogleFonts.sarabun(
-                    color: const Color(0xff53f6aa),
+                    color: Theme.of(context).textTheme.labelMedium!.color,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
