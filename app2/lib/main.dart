@@ -15,10 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'MySpace',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        primaryColorDark: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       getPages: routes,
