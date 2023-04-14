@@ -2,6 +2,7 @@ import 'package:app2/myspace_module/views/introduce_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:app2/myspace_module/views/aboutme_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,12 +25,8 @@ class HomePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              Aboutme(),
               Introduce(),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.red[100],
-              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,

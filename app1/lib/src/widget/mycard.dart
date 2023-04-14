@@ -44,7 +44,7 @@ class MyCard extends StatelessWidget {
       color: Theme.of(context).cardColor,
       elevation: 10,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(40.0),
       ),
       child: Container(
         width: MediaQuery.of(context).size.width * width_size,
