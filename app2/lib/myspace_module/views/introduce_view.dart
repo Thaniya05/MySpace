@@ -1,5 +1,6 @@
 import 'package:app2/myspace_module/controller/introduce_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -85,28 +86,54 @@ Container Web(IntroduceController introController, BuildContext context) {
 
 Padding _buildblank([double d = 20.0]) => Padding(padding: EdgeInsets.all(d));
 
-AutoSizeText _buildStatus(IntroduceController c, BuildContext context) {
+Row _buildStatus(IntroduceController c, BuildContext context) {
   double wfont = c.model.$web_fontsize_status;
   double mfont = c.model.$mobile_fontsize_status;
 
-  return AutoSizeText(
-    'Status : ${c.model.status}',
-    maxLines: 1,
-    minFontSize: 12,
-    style:
-        GoogleFonts.sarabun(fontSize: Get.width < mobilesize ? mfont : wfont),
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      AutoSizeText(
+        'Status : ',
+        maxLines: 1,
+        minFontSize: 12,
+        style: GoogleFonts.sarabun(
+            fontSize: Get.width < mobilesize ? mfont : wfont,
+            color: Colors.amber),
+      ),
+      AutoSizeText(
+        c.model.status,
+        maxLines: 1,
+        minFontSize: 12,
+        style: GoogleFonts.sarabun(
+            fontSize: Get.width < mobilesize ? mfont : wfont),
+      ),
+    ],
   );
 }
 
-AutoSizeText _buildRole(IntroduceController c, BuildContext context) {
+Row _buildRole(IntroduceController c, BuildContext context) {
   double wfont = c.model.$web_fontsize_status;
   double mfont = c.model.$mobile_fontsize_status;
-  return AutoSizeText(
-    'Role : ${c.model.role}',
-    maxLines: 1,
-    minFontSize: 12,
-    style:
-        GoogleFonts.sarabun(fontSize: Get.width < mobilesize ? mfont : wfont),
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      AutoSizeText(
+        'Role : ',
+        maxLines: 1,
+        minFontSize: 12,
+        style: GoogleFonts.sarabun(
+            color: Colors.amber,
+            fontSize: Get.width < mobilesize ? mfont : wfont),
+      ),
+      AutoSizeText(
+        c.model.role,
+        maxLines: 1,
+        minFontSize: 12,
+        style: GoogleFonts.sarabun(
+            fontSize: Get.width < mobilesize ? mfont : wfont),
+      ),
+    ],
   );
 }
 

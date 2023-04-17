@@ -5,7 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import '../model/introduce_model.dart';
 
-class IntroduceController extends GetxController {
+class IntroduceController extends GetxController with StateMixin {
   final model = Introduces();
 
   CarouselOptions options({double h = 200.0}) {
