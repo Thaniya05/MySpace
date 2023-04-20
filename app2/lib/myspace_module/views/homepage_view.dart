@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:app2/myspace_module/views/exp_intro_view.dart';
 import 'package:app2/myspace_module/views/introduce_view.dart';
+import 'package:app2/myspace_module/views/skill_view.dart';
 import 'package:app2/myspace_module/views/timeline_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage>
             Introduce(),
             Aboutme(),
             Timelines(),
+            MySkill(),
             IntroExp(),
           ],
         ),

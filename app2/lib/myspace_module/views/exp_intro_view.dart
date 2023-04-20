@@ -29,81 +29,18 @@ class IntroExp extends GetWidget<ExpIntroController> {
   Container _buildWeb(ExpIntroController c, BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildanimeWeb(
               w: MediaQuery.of(context).size.width * 0.4, context: context),
           Container(
-            color: Colors.white,
-          )
+              child: _buildExpDetails(
+                  w: MediaQuery.of(context).size.width * 0.4,
+                  context: context,
+                  c: c,
+                  crossAx: CrossAxisAlignment.center,
+                  mainAx: MainAxisAlignment.center))
         ],
-      ),
-    );
-  }
-
-  _buildanimeWeb({required double w, required BuildContext context}) {
-    return Container(
-      width: w,
-      color: Colors.white,
-      child: AspectRatio(
-        aspectRatio: 3 / 2,
-        child: Container(
-          //color: Colors.white,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  color: Colors.purple,
-                ),
-              ),
-              Expanded(
-                flex: 8,
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        color: Colors.blue,
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.cartShopping,
-                              size: Get.width < mobilesize ? 16 : 32,
-                              color: Colors.amber,
-                            )
-                                .animate(
-                                  onPlay: (controller) => controller.repeat(),
-                                )
-                                .shake(
-                                  duration: 700.ms,
-                                  delay: 700.ms,
-                                )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 8,
-                      child: Container(
-                        //color: Colors.amber,
-                        child: Container(
-                          margin: EdgeInsets.all(20.0),
-                          //color: Colors.white,
-                          child: _buildSlide(
-                            context,
-                            (MediaQuery.of(context).size.width * 2 / 3) * 0.4,
-                          ), //defaut 0.2
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -111,12 +48,106 @@ class IntroExp extends GetWidget<ExpIntroController> {
   Container _buildMobile(ExpIntroController c, BuildContext context) {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildanimeWeb(
             w: MediaQuery.of(context).size.width * 0.8,
             context: context,
+          ),
+          Container(
+            child: _buildExpDetails(
+              w: MediaQuery.of(context).size.width * 0.83,
+              context: context,
+              c: c,
+              crossAx: CrossAxisAlignment.center,
+              mainAx: MainAxisAlignment.center,
+            ),
           )
         ],
+      ),
+    );
+  }
+
+  Container _buildExpDetails({
+    required double w,
+    required BuildContext context,
+    required ExpIntroController c,
+    CrossAxisAlignment crossAx = CrossAxisAlignment.center,
+    MainAxisAlignment mainAx = MainAxisAlignment.center,
+  }) {
+    return Container(
+      width: w,
+      child: _buildEXP(c, crossAx, mainAx, context),
+    );
+  }
+
+  _buildanimeWeb({required double w, required BuildContext context}) {
+    return Card(
+      elevation: 30,
+      child: Container(
+        width: w,
+        color: Colors.white,
+        child: AspectRatio(
+          aspectRatio: 3 / 2,
+          child: Container(
+            //color: Colors.white,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.purple,
+                  ),
+                ),
+                Expanded(
+                  flex: 8,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          color: Colors.blue,
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.cartShopping,
+                                size: Get.width < mobilesize ? 16 : 32,
+                                color: Colors.amber,
+                              )
+                                  .animate(
+                                    onPlay: (controller) => controller.repeat(),
+                                  )
+                                  .shake(
+                                    duration: 700.ms,
+                                    delay: 700.ms,
+                                  )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: Container(
+                          //color: Colors.amber,
+                          child: Container(
+                            margin: EdgeInsets.all(20.0),
+                            //color: Colors.white,
+                            child: _buildSlide(
+                              context,
+                              (MediaQuery.of(context).size.width * 2 / 3) * 0.4,
+                            ), //defaut 0.2
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -184,14 +215,14 @@ class IntroExp extends GetWidget<ExpIntroController> {
           child: AutoSizeText(
             c.model.details,
             style: GoogleFonts.sarabun(
-              fontSize: Get.width < mobilesize ? 20 : 26,
+              fontSize: Get.width < mobilesize ? 18 : 26,
               fontWeight: FontWeight.w200,
             ),
             maxLines: 9,
             minFontSize: 10,
           ),
         ),
-        Padding(padding: EdgeInsets.all(Get.width < mobilesize ? 0 : 20)),
+        Padding(padding: EdgeInsets.all(Get.width < mobilesize ? 10 : 20)),
         GestureDetector(
           onTap: () {},
           child: Card(
