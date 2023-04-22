@@ -10,6 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:rotated_corner_decoration/rotated_corner_decoration.dart';
+import 'package:sizer/sizer.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 double mobilesize = 1100;
 
@@ -28,18 +30,48 @@ class MySkill extends GetWidget<SkillController> {
         children: [
           AutoSizeText(
             "My Skill",
-            style: GoogleFonts.sarabun(fontSize: 42),
+            style: GoogleFonts.sarabun(fontSize: 24),
           ),
           AutoSizeText(
             "Description",
             style:
-                GoogleFonts.sarabun(fontSize: 30, fontWeight: FontWeight.w200),
+                GoogleFonts.sarabun(fontSize: 20, fontWeight: FontWeight.w200),
           ),
           Padding(padding: EdgeInsets.all(20.0)),
-          Get.width < mobilesize
-              ? _buildMobile(context, skillController)
-              : _buildWeb(context, skillController)
+          Container(
+            height: MediaQuery.of(context).size.height * 0.6,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                color: Colors.blue,
+                child: test(),
+              ),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+
+  GridView test() {
+    return GridView.custom(
+      gridDelegate: SliverQuiltedGridDelegate(
+        crossAxisCount: 4,
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 4,
+        repeatPattern: QuiltedGridRepeatPattern.inverted,
+        pattern: [
+          QuiltedGridTile(2, 2),
+          QuiltedGridTile(1, 1),
+          QuiltedGridTile(1, 1),
+          QuiltedGridTile(1, 2),
+        ],
+      ),
+      childrenDelegate: SliverChildBuilderDelegate(
+        (context, index) => Container(
+          color: Colors.amber,
+          child: Text("${index}"),
+        ),
       ),
     );
   }
