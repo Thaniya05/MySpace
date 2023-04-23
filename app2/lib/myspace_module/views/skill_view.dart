@@ -15,6 +15,20 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 double mobilesize = 1100;
 
+String pathtoasset = "assets/svg/";
+String dots = ".svg";
+
+List<String> _testpic = [
+  "typescript1",
+  "html1",
+  "css1",
+  "flutter1",
+  "dart1",
+  "nodejs1",
+  "react1",
+  "mongo1",
+];
+
 class MySkill extends GetWidget<SkillController> {
   const MySkill({super.key});
 
@@ -23,87 +37,78 @@ class MySkill extends GetWidget<SkillController> {
     final skillController = Get.put(SkillController());
 
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AutoSizeText(
-            "My Skill",
-            style: GoogleFonts.sarabun(fontSize: 24),
-          ),
-          AutoSizeText(
-            "Description",
-            style:
-                GoogleFonts.sarabun(fontSize: 20, fontWeight: FontWeight.w200),
-          ),
-          Padding(padding: EdgeInsets.all(20.0)),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Container(
-                color: Colors.blue,
-                child: test(),
-              ),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Get.width < mobilesize
+            ? _buildMobile(context, skillController)
+            : _buildWeb(context, skillController));
+  }
+
+  Row _buildWeb(BuildContext context, SkillController skillController) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          children: [
+            AutoSizeText(
+              "My Skill",
+              style: GoogleFonts.sarabun(fontSize: 24),
+            ),
+            AutoSizeText(
+              "Description",
+              style: GoogleFonts.sarabun(
+                  fontSize: 20, fontWeight: FontWeight.w200),
+            ),
+          ],
+        ),
+        Padding(padding: EdgeInsets.all(20.0)),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              //color: Colors.blue,
+              child: _buildGrid(skillController),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  GridView test() {
-    return GridView.custom(
-      gridDelegate: SliverQuiltedGridDelegate(
-        crossAxisCount: 4,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
-        repeatPattern: QuiltedGridRepeatPattern.inverted,
-        pattern: [
-          QuiltedGridTile(2, 2),
-          QuiltedGridTile(1, 1),
-          QuiltedGridTile(1, 1),
-          QuiltedGridTile(1, 2),
-        ],
-      ),
-      childrenDelegate: SliverChildBuilderDelegate(
-        (context, index) => Container(
-          color: Colors.amber,
-          child: Text("${index}"),
         ),
-      ),
+      ],
     );
   }
 
-  Container _buildMobile(
-      BuildContext context, SkillController skillController) {
-    return Container(
-      alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height * 0.50,
-      child: _buildGrid(skillController),
+  Column _buildMobile(BuildContext context, SkillController skillController) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AutoSizeText(
+          "My Skill",
+          style: GoogleFonts.sarabun(fontSize: 24),
+        ),
+        AutoSizeText(
+          "Description",
+          style: GoogleFonts.sarabun(fontSize: 20, fontWeight: FontWeight.w200),
+        ),
+        Padding(padding: EdgeInsets.all(20.0)),
+        Container(
+          width: MediaQuery.of(context).size.width * 0.7,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              //color: Colors.blue,
+              child: _buildGrid(skillController),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-  Container _buildWeb(BuildContext context, SkillController skillController) {
-    return Container(
-      alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height * 0.65,
-      child: _buildGrid(skillController),
-    );
-  }
-
-  _buildGrid(SkillController c) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200, //default 200
-          childAspectRatio: 2 / 3,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20),
-      itemCount: c.mylist.length,
-      itemBuilder: (context, index) => _buildCard(c.mylist[index]),
+  StaggeredGrid _buildGrid(SkillController controller) {
+    return StaggeredGrid.count(
+      crossAxisCount: 4,
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      children: controller.getListGrid(),
     );
   }
 
@@ -122,68 +127,5 @@ class MySkill extends GetWidget<SkillController> {
       );
     }
     return _list;
-  }
-
-  Widget? _buildCard(ItemSchema list) {
-    return FlipCard(
-      front: Card(
-        elevation: 10,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 4,
-              child: Container(
-                color: Colors.white,
-                foregroundDecoration: RotatedCornerDecoration.withColor(
-                  badgePosition: BadgePosition.topStart,
-                  color: list.color,
-                  badgeSize: Size(16, 16),
-                ),
-                child: SvgPicture.asset(list.src),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.blue,
-                child: Container(
-                  alignment: Alignment.center,
-                  child: AutoSizeText(
-                    "${list.name}",
-                    style: GoogleFonts.sarabun(fontSize: 18),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      back: Card(
-        elevation: 10,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                //color: Colors.white,
-                alignment: Alignment.center,
-                child: AutoSizeText(
-                  "${list.name}",
-                  style: GoogleFonts.sarabun(),
-                ),
-                color: Colors.blue,
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _buildDetailsBackCard(list.lists),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
