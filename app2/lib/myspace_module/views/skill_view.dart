@@ -47,20 +47,10 @@ class MySkill extends GetWidget<SkillController> {
   Row _buildWeb(BuildContext context, SkillController skillController) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          children: [
-            AutoSizeText(
-              "My Skill",
-              style: GoogleFonts.sarabun(fontSize: 24),
-            ),
-            AutoSizeText(
-              "Description",
-              style: GoogleFonts.sarabun(
-                  fontSize: 20, fontWeight: FontWeight.w200),
-            ),
-          ],
-        ),
+        _buildAboutExp(skillController, CrossAxisAlignment.center,
+            MainAxisAlignment.center, context),
         Padding(padding: EdgeInsets.all(20.0)),
         Container(
           height: MediaQuery.of(context).size.height * 0.6,
@@ -80,14 +70,8 @@ class MySkill extends GetWidget<SkillController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AutoSizeText(
-          "My Skill",
-          style: GoogleFonts.sarabun(fontSize: 24),
-        ),
-        AutoSizeText(
-          "Description",
-          style: GoogleFonts.sarabun(fontSize: 20, fontWeight: FontWeight.w200),
-        ),
+        _buildAboutExp(skillController, CrossAxisAlignment.center,
+            MainAxisAlignment.center, context),
         Padding(padding: EdgeInsets.all(20.0)),
         Container(
           width: MediaQuery.of(context).size.width * 0.7,
@@ -127,5 +111,47 @@ class MySkill extends GetWidget<SkillController> {
       );
     }
     return _list;
+  }
+
+  Container _buildAboutExp(SkillController c, CrossAxisAlignment crossAx,
+      MainAxisAlignment mainAx, BuildContext context) {
+    return Container(
+      width: Get.width < mobilesize
+          ? MediaQuery.of(context).size.width * 0.85
+          : MediaQuery.of(context).size.width * 0.4,
+      child: Column(
+        crossAxisAlignment: crossAx,
+        mainAxisAlignment: mainAx,
+        children: [
+          Center(
+            child: Container(
+                //color: Colors.amber,
+                margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: AutoSizeText(
+                  "About me",
+                  style: GoogleFonts.sarabun(
+                    fontSize: Get.width < mobilesize ? 24 : 40,
+                  ),
+                  maxLines: 1,
+                  minFontSize: 14,
+                )),
+          ),
+          Padding(padding: EdgeInsets.all(Get.width < mobilesize ? 5 : 20)),
+          Container(
+            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+            //color: Colors.amber,
+            child: AutoSizeText(
+              "dasddddaddddddddaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+              style: GoogleFonts.sarabun(
+                fontSize: Get.width < mobilesize ? 20 : 26,
+                fontWeight: FontWeight.w200,
+              ),
+              maxLines: 9,
+              minFontSize: 10,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

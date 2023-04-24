@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       getPages: routes,
-      initialRoute: '/',
+      initialRoute: '/main',
     );
   }
 }

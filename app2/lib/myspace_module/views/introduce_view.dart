@@ -11,7 +11,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 double mobilesize = 820;
 
 class Introduce extends GetWidget<IntroduceController> {
-  const Introduce({super.key});
+  final PageController pCon;
+  const Introduce({required this.pCon, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,19 @@ class Introduce extends GetWidget<IntroduceController> {
     mobilesize = introController.model.$mobile_size;
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 100,
+      height: MediaQuery.of(context).size.height,
       child: Get.width < mobilesize
-          ? Mobile(introController, context)
-          : Web(introController, context),
+          ? Mobile(introController, context, pCon)
+          : Web(introController, context, pCon),
     );
   }
 }
 
-Container Mobile(IntroduceController introController, BuildContext context) {
+Container Mobile(
+  IntroduceController introController,
+  BuildContext context,
+  PageController p,
+) {
   return Container(
     margin: const EdgeInsets.all(50),
     //color: Color.fromARGB(230, 231, 255, 240),
@@ -47,7 +52,7 @@ Container Mobile(IntroduceController introController, BuildContext context) {
               _buildRole(introController, context),
               _buildStatus(introController, context),
               _buildblank(),
-              _buildButtonRow(context)
+              _buildButtonRow(context, p),
             ],
           ),
         )
@@ -56,7 +61,11 @@ Container Mobile(IntroduceController introController, BuildContext context) {
   );
 }
 
-Container Web(IntroduceController introController, BuildContext context) {
+Container Web(
+  IntroduceController introController,
+  BuildContext context,
+  PageController p,
+) {
   return Container(
     margin: const EdgeInsets.fromLTRB(100, 100, 100, 100),
     //color: Color.fromARGB(230, 231, 255, 240),
@@ -75,7 +84,7 @@ Container Web(IntroduceController introController, BuildContext context) {
               _buildRole(introController, context),
               _buildStatus(introController, context),
               _buildblank(),
-              _buildButtonRow(context)
+              _buildButtonRow(context, p)
             ],
           ),
         )
@@ -201,12 +210,14 @@ List<Widget> _listSlide(IntroduceController introController) {
       .toList();
 }
 
-Row _buildButtonRow(BuildContext context) {
+Row _buildButtonRow(BuildContext context, PageController p) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          p.animateToPage(1, duration: 1300.ms, curve: Curves.easeInOutExpo);
+        },
         child: Card(
           elevation: 10,
           color: Theme.of(context).cardColor,
@@ -227,7 +238,9 @@ Row _buildButtonRow(BuildContext context) {
       ),
       Padding(padding: EdgeInsets.all(20.0)),
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          p.animateToPage(4, duration: 2000.ms, curve: Curves.easeInOut);
+        },
         child: Card(
           elevation: 10,
           color: Theme.of(context).cardColor,

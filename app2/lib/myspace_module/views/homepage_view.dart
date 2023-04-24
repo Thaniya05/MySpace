@@ -22,10 +22,29 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     ScrollController _controller = ScrollController();
-    final _con = PageController(initialPage: 3);
+    final con = PageController(initialPage: 0, keepPage: false);
 
     return Scaffold(
-      body: NestedScrollView(
+      body: PageView(
+        scrollDirection: Axis.vertical,
+        clipBehavior: Clip.antiAlias,
+        controller: con,
+        children: [
+          Introduce(
+            pCon: con,
+          ),
+          Aboutme(),
+          Timelines(),
+          MySkill(),
+          IntroExp(),
+        ],
+      ),
+    );
+  }
+}
+
+/*
+body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -37,33 +56,7 @@ class _HomePageState extends State<HomePage>
             ),
           ];
         },
-        /*
-        body: SingleChildScrollView(
-          controller: _controller,
-          child: Column(
-            children: [
-              Introduce(),
-              Aboutme(),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                //color: Colors.red[200],
-                child: GestureDetector(
-                  child: Text('test'),
-                  onTap: () {
-                    _controller.animateTo(0,
-                        duration: 1000.ms, curve: Curves.easeIn);
-                  },
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.red[300],
-              ),
-            ],
-          ),
-        ),*/
+       
         body: PageView(
           scrollDirection: Axis.vertical,
           controller: _con,
@@ -76,6 +69,4 @@ class _HomePageState extends State<HomePage>
           ],
         ),
       ),
-    );
-  }
-}
+*/
