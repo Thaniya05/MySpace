@@ -22,120 +22,141 @@ class SkillDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
-                      "Topic",
-                      style: GoogleFonts.sarabun(
-                        fontSize: 42,
-                      ),
-                    ),
+                    _buildtopic(),
                     _buildBlank(),
-                    Row(
-                      children: [
-                        FaIcon(FontAwesomeIcons.locationArrow),
-                        _buildBlank(2.0),
-                        AutoSizeText(
-                          "NewNN Co,LTD",
-                          style: GoogleFonts.sarabun(fontSize: 14),
-                        ),
-                        _buildBlank(),
-                        FaIcon(FontAwesomeIcons.clock),
-                        _buildBlank(2.0),
-                        AutoSizeText(
-                          "NewNN Co,LTD",
-                          style: GoogleFonts.sarabun(fontSize: 14),
-                        ),
-                      ],
-                    ),
+                    _buildLocation(),
                     _buildBlank(),
-                    Center(
-                      child: Card(
-                        elevation: 10,
-                        child: Container(
-                          margin: EdgeInsets.all(20),
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AutoSizeText(
-                                "Detailsasdasdasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
-                                style: GoogleFonts.sarabun(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w200,
-                                ),
-                                minFontSize: 10,
-                              ),
-                              _buildBlank(10.0),
-                              Center(
-                                child: AutoSizeText(
-                                  "TopicPic",
-                                  style: GoogleFonts.sarabun(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w200,
-                                  ),
-                                  minFontSize: 10,
-                                ),
-                              ),
-                              Center(
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  child: AspectRatio(
-                                    aspectRatio: 3 / 2,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/pic/webapp.jpg"),
-                                            fit: BoxFit.fill),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AutoSizeText(
-                                      "Skill : ",
-                                      style: GoogleFonts.sarabun(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w200,
-                                      ),
-                                      minFontSize: 10,
-                                    ),
-                                    Chip(
-                                      label: Text(
-                                        "Mini Project",
-                                        style:
-                                            GoogleFonts.sarabun(fontSize: 14),
-                                      ),
-                                      elevation: 7.0,
-                                      backgroundColor: Colors.orange,
-                                      padding: EdgeInsets.all(5.0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              AutoSizeText(
-                                "Detailsasdasdasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
-                                style: GoogleFonts.sarabun(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w200,
-                                ),
-                                minFontSize: 10,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
+                    _buildCard(context)
                   ],
                 ),
               ),
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Center _buildCard(BuildContext context) {
+    return Center(
+      child: Card(
+        elevation: 10,
+        child: Container(
+          margin: EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _builddetails(),
+              _buildBlank(10.0),
+              _buildPicture(context),
+              AutoSizeText(
+                "Detailsasdasdasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
+                style: GoogleFonts.sarabun(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w200,
+                ),
+                minFontSize: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildPicture(BuildContext context) {
+    return Column(
+      children: [
+        Center(
+          child: AutoSizeText(
+            "TopicPic",
+            style: GoogleFonts.sarabun(
+              fontSize: 30,
+              fontWeight: FontWeight.w200,
+            ),
+            minFontSize: 10,
+          ),
+        ),
+        Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            child: AspectRatio(
+              aspectRatio: 3 / 2,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/pic/webapp.jpg"),
+                      fit: BoxFit.fill),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AutoSizeText(
+                "Skill : ",
+                style: GoogleFonts.sarabun(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
+                minFontSize: 10,
+              ),
+              Chip(
+                label: Text(
+                  "Mini Project",
+                  style: GoogleFonts.sarabun(fontSize: 14),
+                ),
+                elevation: 7.0,
+                backgroundColor: Colors.orange,
+                padding: EdgeInsets.all(5.0),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  AutoSizeText _builddetails() {
+    return AutoSizeText(
+      "Detailsasdasdasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
+      style: GoogleFonts.sarabun(
+        fontSize: 30,
+        fontWeight: FontWeight.w200,
+      ),
+      minFontSize: 10,
+    );
+  }
+
+  Row _buildLocation() {
+    return Row(
+      children: [
+        FaIcon(FontAwesomeIcons.locationArrow),
+        _buildBlank(2.0),
+        AutoSizeText(
+          "NewNN Co,LTD",
+          style: GoogleFonts.sarabun(fontSize: 14),
+        ),
+        _buildBlank(),
+        FaIcon(FontAwesomeIcons.clock),
+        _buildBlank(2.0),
+        AutoSizeText(
+          "NewNN Co,LTD",
+          style: GoogleFonts.sarabun(fontSize: 14),
+        ),
+      ],
+    );
+  }
+
+  AutoSizeText _buildtopic() {
+    return AutoSizeText(
+      "Topic",
+      style: GoogleFonts.sarabun(
+        fontSize: 42,
       ),
     );
   }
