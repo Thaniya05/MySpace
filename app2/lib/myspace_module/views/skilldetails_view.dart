@@ -4,13 +4,17 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'myproject_view.dart';
+import 'WorkHistory.dart';
+
+Map data = {'topic': 'test', 'location': 'test'};
 
 class SkillDetails extends StatelessWidget {
   const SkillDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    /*return SingleChildScrollView(
       child: Container(
         //color: Colors.red,
         child: Column(
@@ -20,21 +24,20 @@ class SkillDetails extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               child: Container(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildtopic(),
-                    _buildBlank(),
-                    _buildLocation(),
-                    _buildBlank(),
-                    _buildCard(context)
-                  ],
-                ),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: data.entries.map((e) {
+                      if (e.key == "topic") return _buildtopic();
+                      if (e.key == "location") {}
+                      return _builddetails();
+                    }).toList()),
               ),
             )
           ],
         ),
       ),
-    );
+      
+    );*/
+    return WorkHistory();
   }
 
   Center _buildCard(BuildContext context) {

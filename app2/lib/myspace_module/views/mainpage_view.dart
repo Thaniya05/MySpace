@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flip_card/flip_card.dart';
 
+import 'myproject_view.dart';
+
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
@@ -52,11 +54,7 @@ class MainPage extends StatelessWidget {
                   color: Colors.red,
                 ),
                 SkillDetails(),
-                Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.blue,
-                ),
+                MyProject(),
               ],
             )),
           ),
