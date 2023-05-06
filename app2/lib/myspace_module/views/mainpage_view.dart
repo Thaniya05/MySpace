@@ -29,7 +29,7 @@ class MainPage extends StatelessWidget {
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                   sliver: SliverAppBar(
-                    title: const Text('Floating Nested SliverAppBar'),
+                    title: const Text(''),
                     floating: true,
                     expandedHeight: 150.0,
                     forceElevated: true,

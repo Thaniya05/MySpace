@@ -128,7 +128,7 @@ class MySkill extends GetWidget<SkillController> {
                 //color: Colors.amber,
                 margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
                 child: AutoSizeText(
-                  "About me",
+                  "Skill / Tools",
                   style: GoogleFonts.sarabun(
                     fontSize: Get.width < mobilesize ? 24 : 40,
                   ),
@@ -141,7 +141,7 @@ class MySkill extends GetWidget<SkillController> {
             margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
             //color: Colors.amber,
             child: AutoSizeText(
-              "dasddddaddddddddaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+              "",
               style: GoogleFonts.sarabun(
                 fontSize: Get.width < mobilesize ? 20 : 26,
                 fontWeight: FontWeight.w200,

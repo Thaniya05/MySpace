@@ -8,6 +8,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:js' as js;
 
 double mobilesize = 1100;
 
@@ -158,6 +160,12 @@ Column _buildAboutme(
   );
 }
 
+Future<void> _launchUrl(_url) async {
+  if (!await launchUrl(Uri.parse(_url))) {
+    throw Exception('Could not launch $_url');
+  }
+}
+
 Row _buildCard(BuildContext context) {
   return Row(
     children: [
@@ -199,7 +207,7 @@ Row _buildCard(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 IconButton(
-                  onPressed: null,
+                  onPressed: () async {},
                   focusColor: Colors.amber,
                   highlightColor: Colors.amber,
                   icon: FaIcon(
@@ -223,7 +231,7 @@ Row _buildCard(BuildContext context) {
                 IconButton(
                   onPressed: null,
                   icon: FaIcon(
-                    FontAwesomeIcons.linkedin,
+                    FontAwesomeIcons.github,
                     size: Get.width < 650 ? 16 : 40,
                   ),
                 ),
@@ -235,108 +243,3 @@ Row _buildCard(BuildContext context) {
     ],
   );
 }
-
-
-/*
-Container Tablet(BuildContext context, AboutMeController c) {
-  return Container(
-    margin: EdgeInsets.all(50),
-    child: Column(
-      children: [
-        Card(
-          elevation: 20,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          color: Colors.amber,
-          child: AspectRatio(
-            aspectRatio: 3 / 2,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.01,
-              margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
-              padding: EdgeInsets.all(5),
-              child: _buildCard(context),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Container(),
-        )
-      ],
-    ),
-  );
-}
-
-Container Mobile(BuildContext context, AboutMeController c) {
-  return Container(
-    margin: EdgeInsets.all(50),
-    child: Column(
-      children: [
-        Card(
-          elevation: 20,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          //color: Colors.amber,
-          child: AspectRatio(
-            aspectRatio: 3 / 2,
-            child: Container(
-              height: Get.width * 0.20,
-              margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
-              padding: EdgeInsets.all(5),
-              child: _buildCard(context),
-            ),
-          ),
-        ),
-        Padding(padding: EdgeInsets.all(30)),
-        Card(
-          elevation: 10,
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            child: _buildAboutme(c),
-          ),
-        )
-      ],
-    ),
-  );
-}
-
-Container Web(BuildContext context, AboutMeController c) {
-  return Container(
-    margin: EdgeInsets.all(50),
-    //color: Colors.amber,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Card(
-          elevation: 20,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            width: MediaQuery.of(context).size.height * 0.5 * (3 / 2),
-            child: Container(
-              margin: EdgeInsets.all(20),
-              child: _buildCard(context),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: Container(
-            width: 600,
-            height: MediaQuery.of(context).size.height * 0.5,
-            margin: EdgeInsets.all(20),
-            child: _buildAboutme(c),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-*/

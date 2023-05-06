@@ -2,9 +2,9 @@ class Introduces {
   final List<String> logolist = [
     "assets/svg/flutter.svg",
     "assets/svg/html-1.svg",
-    "assets/svg/nodejs-1.svg",
+    "assets/svg/mongo1.svg",
     "assets/svg/react-2.svg",
-    "assets/svg/typescript.svg"
+    "assets/svg/dart1.svg"
   ];
 
   String role = "Backend Developer";
